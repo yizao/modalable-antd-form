@@ -12,19 +12,21 @@ function modalable(WrappedComponent) {
       this.setState({ visible: !!flag });
     }
 
+    // TODO 出入自定义处理表单参数方法
     handleOk = (isContinue = false) => {
       this.form.validateFields((err, fieldsValue) => {
         if (err) return;
         const formData = {
           ...fieldsValue,
         };
+        this.form.resetFields();
         this.props.handleOk(formData, isContinue);
       });
     }
 
     render() {
       const { visible } = this.state;
-      const { title = '', formData = {}, withContinue = false } = this.props;
+      const { title = '', width = 720, formData = {}, withContinue = false } = this.props;
 
       const footer = [
         <Button key="back" onClick={() => this.toggleVisible()}>取消</Button>,
@@ -47,7 +49,7 @@ function modalable(WrappedComponent) {
       return (
         <Modal
           title={ title ? title : (formData.id ? '更新' : '新增')}
-          width={720}
+          width={width}
           style={{ top: 10 }}
           visible={visible}
           onOk={this.handleOk}
