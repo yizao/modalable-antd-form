@@ -9,6 +9,10 @@
     "prepare": "npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yizao/modalable-antd-form.git"
+  },
   "keywords": [
     "react",
     "hoc",
@@ -17,6 +21,10 @@
   ],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yizao/modalable-antd-form/issues"
+  },
+  "homepage": "https://github.com/yizao/modalable-antd-form#readme",
   "dependencies": {
     "antd": "^3.4.4"
   },
