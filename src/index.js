@@ -12,13 +12,13 @@ function modalable(WrappedComponent) {
       this.setState({ visible: !!flag });
     }
 
-    handleOk = () => {
+    handleOk = (isContinue = false) => {
       this.form.validateFields((err, fieldsValue) => {
         if (err) return;
         const formData = {
           ...fieldsValue,
         };
-        this.props.handleOk(formData);
+        this.props.handleOk(formData, isContinue);
       });
     }
 
