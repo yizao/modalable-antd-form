@@ -56,7 +56,7 @@ function modalable(WrappedComponent) {
           maskClosable={false}
           footer={footer}
         >
-          <WrappedComponent {...this.props} ref={node => this.form = node}/>
+          <WrappedComponent {...this.props} {...formData} ref={node => this.form = node}/>
         </Modal>
       )
     }
