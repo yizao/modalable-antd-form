@@ -12,7 +12,6 @@ function modalable(WrappedComponent) {
       this.setState({ visible: !!flag });
     }
 
-    // TODO 出入自定义处理表单参数方法
     handleOk = (isContinue = false) => {
       this.form.validateFields((err, fieldsValue) => {
         if (err) return;
@@ -26,39 +25,42 @@ function modalable(WrappedComponent) {
 
     render() {
       const { visible } = this.state;
-      const { title = '', width = 720, formData = {}, withContinue = false } = this.props;
+      const {
+        loading = false, title = '', formData = {},
+        style = { top: 10 }, footer = null,
+        okText = '确定', cancelText = '取消', continueText = '保存并继续',
+        withContinue = false, ...rest
+      } = this.props;
 
-      const footer = [
-        <Button key="back" onClick={() => this.toggleVisible()}>取消</Button>,
-        <Button key="submit" type="primary" onClick={() => this.handleOk(false)}>
-          保存
+      const footers = [
+        <Button key="back" onClick={() => this.toggleVisible()}>{cancelText}</Button>,
+        <Button loading={loading} key="submit" type="primary" onClick={() => this.handleOk(false)}>
+          {okText}
         </Button>,
       ]
       if (withContinue && !formData.id) {
-        footer.push(
+        footers.push(
           <Button
             key="continueSubmit"
             type="primary"
             onClick={() => this.handleOk(true)}
           >
-            保存并继续
+            {continueText}
           </Button>
         )
       }
 
       return (
         <Modal
-          title={ title ? title : (formData.id ? '更新' : '新增')}
-          width={width}
-          style={{ top: 10 }}
+          {...rest}
+          title={title ? title : (formData.id ? '更新' : '新增')}
+          style={style}
           visible={visible}
           onOk={this.handleOk}
           onCancel={() => this.toggleVisible()}
-          destroyOnClose
-          maskClosable={false}
-          footer={footer}
+          footer={footer === null ? null : footers}
         >
-          <WrappedComponent {...this.props} {...formData} ref={node => this.form = node}/>
+          <WrappedComponent {...this.props} {...formData} ref={node => this.form = node} />
         </Modal>
       )
     }

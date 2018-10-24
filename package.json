@@ -25,9 +25,7 @@
     "url": "https://github.com/yizao/modalable-antd-form/issues"
   },
   "homepage": "https://github.com/yizao/modalable-antd-form#readme",
-  "dependencies": {
-    "antd": "^3.4.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
