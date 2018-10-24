@@ -31,7 +31,7 @@ const YourFormWithModal = modalable(YourForm);
 | --- | --- | --- | --- |
 | withContinue | 是否有[保存并继续按钮] | Boolean | false |
 | formData | 表单值 | Object | {} |
-| handleOk | 点击确定回调 | function(data) |  |
+| handleOk | 点击确定回调 | function(data, isContinue) |  |
 
 
 
