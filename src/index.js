@@ -27,7 +27,7 @@ function modalable(WrappedComponent) {
       const { visible } = this.state;
       const {
         loading = false, title = '', formData = {},
-        style = { top: 10 }, footer = null,
+        style = { top: 10 }, footer = undefined,
         okText = '确定', cancelText = '取消', continueText = '保存并继续',
         withContinue = false, ...rest
       } = this.props;
