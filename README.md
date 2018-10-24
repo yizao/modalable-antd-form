@@ -18,10 +18,16 @@ const YourFormWithModal = modalable(YourForm);
 <YourFormWithModal
   {...yourFormProps}
   ref={node => this.formModal = node}
+  handleOk={this.handleOkClick}
 />
 
 // 触发 modal
 <Button onClick={() => this.formModal.toggleVisible(true)}>打开表单</Button>
+
+// isContinue 点击[保存并继续按钮]标识
+handleProjectSave = (formData, isContinue) => {
+    // process form data 
+  }
 ```
 
 ## ✨ API
