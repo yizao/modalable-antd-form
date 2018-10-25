@@ -18,7 +18,9 @@ function modalable(WrappedComponent) {
         const formData = {
           ...fieldsValue,
         };
-        this.form.resetFields();
+        if (this.props.resetField === true) {
+          this.form.resetFields();
+        }
         this.props.handleOk(formData, isContinue);
       });
     }
